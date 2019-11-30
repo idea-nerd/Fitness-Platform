@@ -34,7 +34,7 @@ A cross-platform desktop-based Gym Management Studio for Windows, Mac and Linux.
 
 ### Demo
 
-<a target="_blank" href="https://genesis-cloud.s3.us-east-2.amazonaws.com/genesis.gif">Live Demo</a>
+<a target="_blank" href="https://genesis-cloud.s3.us-east-2.amazonaws.com/genesis_walkthrough.gif">Live Demo</a>
 
 ### Documentation
 
