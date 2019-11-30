@@ -1,0 +1,23 @@
+<nb-card>
+    <nb-card-header>Equipments</nb-card-header>
+    <nb-card-body>
+      <nb-actions size="small">
+        <nb-action icon="plus-outline" title="add" (click)="onCreateSelect()"></nb-action>
+        <nb-action *ngIf="equipmentsPresent" icon="eye-outline" title="view" (click)="onViewSelect()"></nb-action>
+        <nb-action *ngIf="equipmentsPresent" icon="edit-outline" title="edit" (click)="onEditSelect()"></nb-action>
+        <nb-action *ngIf="!equipmentsPresent" icon="eye-outline" title="view" disabled></nb-action>
+        <nb-action *ngIf="!equipmentsPresent" icon="edit-outline" title="edit" disabled></nb-action>
+      </nb-actions>
+    </nb-card-body>
+  </nb-card>
+  <nb-card>
+    <nb-card-body>
+      <ng2-smart-table
+        [settings]="settings"
+        [source]="equipments$ | async"
+        (rowSelect)="onSelected($event)"
+      >
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>
+  

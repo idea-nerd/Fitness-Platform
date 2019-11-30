@@ -1,0 +1,73 @@
+<nb-card>
+        <nb-card-body>
+          <form [formGroup]="salesForm" (ngSubmit)="onSubmit(salesForm.value)">
+            <div>
+              <div class="row">
+                  <div class="form-group row">
+                      <nb-actions size="small">
+                          <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                          <nb-action *ngIf="salesForm.valid" icon="plus-outline" title="add" (click)="onSubmit(salesForm.value)" [disabled]="!salesForm.valid"></nb-action>
+                          <nb-action *ngIf="!salesForm.valid" icon="plus-outline" title="add" [disabled]="!salesForm.valid"></nb-action>
+                      </nb-actions>
+                  </div>
+              </div>
+              <br />
+                <div class="row">
+                  <div class="col-lg-7">
+                    <nb-card>
+                      <nb-card-header>Sales Details</nb-card-header>
+                      <nb-card-body class="full-name-inputs">
+                        <div class="full-name-inputs">
+                              <nb-select id="productCode" formControlName="productCode" placeholder="Select Product" required>
+                                <nb-option *ngFor="let product of products$ | async" value="{{product.productCode}}|{{ product.salePrice }}|{{ product.image }}|{{ product.quantity }}">{{ product.name }}</nb-option>
+                              </nb-select>
+                        </div>
+                        <div class="full-name-inputs">
+                            <input type="number" nbInput fullWidth placeholder="Quantity" formControlName="quantity" required />
+                        </div>
+                      
+                      </nb-card-body>
+                    </nb-card>
+                      <nb-card>
+                        <nb-card-header>Discounts Details</nb-card-header>
+                        <nb-card-body>
+                          <div class="full-name-inputs">
+                            <nb-select id="discountPercent" formControlName="discountPercent" required>
+                                <nb-option value="0">0 %</nb-option>
+                                <nb-option value="1">1 %</nb-option>
+                                <nb-option value="2">2 %</nb-option>
+                                <nb-option value="3">3 %</nb-option>
+                            </nb-select>
+                            <input type="text" nbInput fullWidth placeholder="Discount Note" formControlName="discountNote" required />
+                          </div>
+
+                        </nb-card-body>
+                      </nb-card>
+                        <nb-card>
+                          <nb-card-header>Customer Details</nb-card-header>
+                          <nb-card-body>
+                            <div class="full-name-inputs">
+                              <input type="text" nbInput fullWidth placeholder="First Name" formControlName="firstName" required />
+                              <input type="text" nbInput fullWidth placeholder="Last Name" formControlName="lastName" required />
+                            </div>
+                            <div class="full-name-inputs">
+                              <input type="text" nbInput fullWidth placeholder="address" formControlName="address" required />
+                              <input type="tel" nbInput fullWidth placeholder="phone" formControlName="phone" required />
+                            </div>
+
+                          </nb-card-body>
+                        </nb-card>
+                      </div>
+                     <div class="col-lg-5">
+                        <nb-card>
+                              <nb-card-header>Preview</nb-card-header>
+                              <nb-card-body class="full-name-inputs" >
+                                  <p *ngIf="salesForm.value.productCode && salesForm.value.quantity && salesForm.value.discountPercent">Total: ${{ calculatePrice() }}</p>
+                              </nb-card-body>
+                          </nb-card>
+                     </div>  
+                </div>
+            </div>
+          </form>
+        </nb-card-body>
+      </nb-card>

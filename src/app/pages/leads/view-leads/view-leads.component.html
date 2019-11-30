@@ -1,0 +1,35 @@
+<nb-card>
+    <nb-card-header>Leads</nb-card-header>
+    <nb-card-body>
+      <nb-actions size="small" *ngIf="leadsPresent">
+        <nb-action icon="plus-outline" title="add" (click)="onCreateSelect()"></nb-action>
+        <nb-action icon="eye-outline" title="view" (click)="onViewSelect()"></nb-action>
+        <nb-action icon="edit-outline" title="edit" (click)="onEditSelect()"></nb-action>
+        <nb-action icon="person-add-outline" title="edit" (click)="onAddAsClient()"></nb-action>
+      </nb-actions>
+      <nb-actions size="small" *ngIf="!leadsPresent">
+        <nb-action icon="plus-outline" title="add" (click)="onCreateSelect()"></nb-action>
+        <nb-action icon="eye-outline" title="view" disabled></nb-action>
+        <nb-action icon="edit-outline" title="edit" disabled></nb-action>
+      </nb-actions>
+    </nb-card-body>
+  </nb-card>
+  <nb-card>
+    <nb-card-body *ngIf="user.role == 'Manager' || user.role == 'Owner'">
+      <ng2-smart-table
+        [settings]="settings"
+        [source]="leads$ | async"
+        (rowSelect)="onSelected($event)"
+      >
+      </ng2-smart-table>
+    </nb-card-body>
+    <nb-card-body *ngIf="user.role == 'Trainer'">
+        <ng2-smart-table
+          [settings]="settings"
+          [source]="lead$ | async"
+          (rowSelect)="onSelected($event)"
+        >
+        </ng2-smart-table>
+      </nb-card-body>
+  </nb-card>
+  

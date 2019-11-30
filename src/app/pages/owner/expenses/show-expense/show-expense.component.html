@@ -1,0 +1,55 @@
+<div>
+        <nb-card *ngIf="expense">
+          <nb-card-body>
+            <div>
+              <div class="row">
+                <div class="form-group row">
+                  <nb-actions size="small">
+                    <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                  </nb-actions>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+      
+                <div class="col-lg-12">
+                  <nb-card>
+                    <nb-card-header>Expense Details</nb-card-header>
+                    <nb-card-body>
+                      <div class="full-name-inputs">
+                        <!--CLient Details-->
+                        <table>
+                          <tr>
+                            <td class="title">Code:</td>
+                            <td>{{ expense.expenseCode }}</td>
+                          </tr>
+                          <tr>
+                              <td class="title">Category:</td>
+                              <td>{{ expense.category }}</td>
+                          </tr>
+                          <tr>
+                            <td class="title">Amount:</td>
+                            <td>${{ expense.amount }}</td>
+                          </tr>
+                          <tr>
+                              <td class="title">Due Date:</td>
+                              <td>{{ expense.dueDate }}</td>
+                          </tr>
+                          <tr>
+                              <td class="title">Payment Status:</td>
+                              <td>{{ expense.paid }}</td>
+                          </tr>
+                          <tr>
+                              <td class="title">Description:</td>
+                              <td>{{ expense.note }}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </nb-card-body>
+                  </nb-card>
+                </div>
+              </div>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>

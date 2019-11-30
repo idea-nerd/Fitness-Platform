@@ -1,0 +1,76 @@
+<nb-card *ngIf="product">
+    <nb-card-body>
+      <form [formGroup]="productsForm" (ngSubmit)="onSubmit(productsForm.value)">
+        <div>
+          <div class="row">
+            <div class="form-group row">
+                <nb-actions size="small">
+                  <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                  <nb-action icon="plus-square-outline" title="update" (click)="onSubmit(productsForm.value)" [disabled]="!productsForm.valid"></nb-action>
+                  <nb-action icon="archive-outline" title="archive" (click)="onArchive(productsForm.value)" [disabled]="!productsForm.valid"></nb-action>
+                </nb-actions>
+              </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-lg-7">
+              <nb-card>
+                <nb-card-header>Products Details</nb-card-header>
+                <nb-card-body>
+                  <div class="full-name-inputs">
+                    <input type="text" nbInput fullWidth placeholder="Item Name" formControlName="name" required />
+                    <input type="text" nbInput fullWidth placeholder="Description" formControlName="description" required />
+                  </div>
+                  <div class="alert"
+                    *ngIf="!productsForm.controls['name'].valid && productsForm.controls['name'].touched">
+                    {{ validations.length }}</div>
+                  <div class="alert"
+                    *ngIf="!productsForm.controls['description'].valid && productsForm.controls['description'].touched">
+                    {{ validations.length }}</div>
+                  <div class="full-name-inputs">
+                    <input type="number" nbInput fullWidth placeholder="Cost Price" formControlName="costPrice" required />
+                    <input type="nummber" nbInput fullWidth placeholder="Sales Price" formControlName="salePrice" required />
+                  </div>
+                  <div class="alert" *ngIf="!productsForm.controls['costPrice'].valid && productsForm.controls['costPrice'].touched">
+                    {{ validations.required }}</div>
+                  <div class="alert" *ngIf="!productsForm.controls['salePrice'].valid && productsForm.controls['salePrice'].touched">
+                    {{ validations.required }}</div>
+                  <div class="full-name-inputs">
+                    <nb-select id="category" formControlName="category" placeholder="Product Category" required>
+                      <nb-option value="Apparel">Apparel</nb-option>
+                      <nb-option value="Supplements">Supplements</nb-option>
+                    </nb-select>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+            </div>
+            <div class="col-lg-5">
+                <nb-card>
+                    <nb-card-header>Image</nb-card-header>
+                    <nb-card-body>
+                      <div ngx-dropzone style="background: none!important; border: 2px dashed #e4e9f2;"
+                        [accept]="'image/*'" 
+                        [multiple]="false" 
+                        [expandable]="true"
+                        (change)="onSelect($event)">
+                        <ngx-dropzone-label>
+                          <div>
+                            <h2></h2>
+                          </div>
+                        </ngx-dropzone-label>
+                        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                          <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-image-preview>
+                      </div>
+                    </nb-card-body>
+                  </nb-card>
+            </div>
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+  </nb-card>
+
+<nb-card *ngIf="!product">
+    <ngx-loader></ngx-loader>
+</nb-card>

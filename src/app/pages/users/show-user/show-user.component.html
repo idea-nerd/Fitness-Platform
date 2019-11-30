@@ -1,0 +1,111 @@
+<div>
+    <nb-card *ngIf="user">
+        <nb-card-body>
+            <div>
+              <div class="row">
+                <div class="form-group row">
+                    <nb-actions size="small">
+                        <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                    </nb-actions>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="row">
+                    <nb-card>
+                      <nb-card-body>
+                        <div class="full-name-inputs">
+                            <img src="{{ user.image }}" alt="test">
+                        </div>
+                      </nb-card-body>
+                    </nb-card>
+                  </div>
+                </div>
+      
+                <div class="col-lg-6">
+                  <nb-card>
+                    <nb-card-header>User Details</nb-card-header>
+                    <nb-card-body>
+                      <div class="full-name-inputs">
+                        <!--CLient Details-->
+                        <table>
+                            <tr >
+                                <td class="title">User Name:</td>
+                                <td>{{ user.firstName + ' ' + user.lastName }}</td>
+                            </tr>
+                            <tr>
+                              <td class="title">Phone:</td>
+                              <td><a href='tel:{{user.phone}}'>
+                                  <nb-icon 
+                                    icon="phone-outline" 
+                                    status="success"  
+                                    pack="eva">
+                                  </nb-icon>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                              <td class="title">Email:</td>
+                              <td><a href='mailto:{{user.email}}'>
+                                    <nb-icon 
+                                      icon="email-outline" 
+                                      status="success"  
+                                      pack="eva">
+                                    </nb-icon>
+                                  </a>
+                              </td>
+                          </tr>
+                            <tr >
+                                <td class="title">Address:</td>
+                                <td>{{ user.address }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">district:</td>
+                                <td>{{ user.district }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">city:</td>
+                                <td>{{ user.city }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">town:</td>
+                                <td>{{ user.town }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">DoB:</td>
+                                <td>{{ user.dob }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">Sex:</td>
+                                <td>{{ user.gender }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">Emergency First Name:</td>
+                                <td>{{ user.contactFName }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">Emergency Last Name:</td>
+                                <td>{{ user.contactLName }}</td>
+                            </tr>
+                            <tr>
+                              <td class="title">Emergency Phone:</td>
+                              <td><a href='tel:{{user.contactPhone}}'>
+                                  <nb-icon 
+                                    icon="phone-outline" 
+                                    status="success"  
+                                    pack="eva">
+                                  </nb-icon>
+                                </a>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </nb-card-body>
+                  </nb-card>
+                </div>
+              </div>
+            </div>
+        </nb-card-body>
+      </nb-card>
+    </div>

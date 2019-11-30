@@ -1,0 +1,65 @@
+<div>
+<nb-card *ngIf="lead">
+        <nb-card-body>
+            <div>
+              <div class="row">
+                <div class="form-group row">
+                    <nb-actions size="small">
+                        <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                    </nb-actions>
+                </div>
+              </div>
+              <br />
+              <div class="row">      
+                <div class="col-lg-12">
+                  <nb-card>
+                    <nb-card-header>Lead Details</nb-card-header>
+                    <nb-card-body>
+                      <div class="full-name-inputs">
+                        <!--CLient Details-->
+                        <table>
+                            <tr>
+                                <td class="title">Lead Name:</td>
+                                <td>{{ lead.firstName + ' ' + lead.lastName }}</td>
+                            </tr>
+                            <tr>
+                              <td class="title">Phone:</td>
+                              <td><a href='tel:{{lead.phone}}'>
+                                  <nb-icon 
+                                    icon="phone-outline" 
+                                    status="success"  
+                                    pack="eva">
+                                  </nb-icon>
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="title">Email:</td>
+                              <td><a href='mailto:{{lead.email}}'>
+                                    <nb-icon 
+                                      icon="email-outline" 
+                                      status="success"  
+                                      pack="eva">
+                                    </nb-icon>
+                                  </a>
+                              </td>
+                            </tr>
+                            <tr>
+                                <td class="title">Interest:</td>
+                                <td>{{ lead.aim }}</td>
+                            </tr>
+                            <tr>
+                                <td class="title">Level:</td>
+                                <td>{{ lead.interestedIn }}</td>
+                            </tr>
+                            
+                        </table>
+                      </div>
+                    </nb-card-body>
+                  </nb-card>
+                </div>
+              </div>
+            </div>
+        </nb-card-body>
+      </nb-card>
+    </div>

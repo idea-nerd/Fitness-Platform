@@ -1,0 +1,62 @@
+<div>
+    <nb-card *ngIf="equipment">
+        <nb-card-body>
+            <div>
+              <div class="row">
+                <div class="form-group row">
+                    <nb-actions size="small">
+                        <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                    </nb-actions>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="row">
+                    <nb-card>
+                      <nb-card-body>
+                        <div class="full-name-inputs">
+                            <img src="{{ equipment.image }}" alt="equipment">
+                        </div>
+                      </nb-card-body>
+                    </nb-card>
+                  </div>
+                </div>
+      
+                <div class="col-lg-6">
+                  <nb-card>
+                    <nb-card-header>Equipment Details</nb-card-header>
+                    <nb-card-body>
+                      <div class="full-name-inputs">
+                        <!--CLient Details-->
+                        <table>
+                            <tr >
+                                <td class="title">Name:</td>
+                                <td>{{ equipment.name }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">Description:</td>
+                                <td>{{ equipment.description }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">Cost Price:</td>
+                                <td>${{ equipment.costPrice }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">Type:</td>
+                                <td>{{ equipment.category }}</td>
+                            </tr>
+                        </table>
+                      </div>
+                    </nb-card-body>
+                  </nb-card>
+                </div>
+              </div>
+            </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <nb-card *ngIf="!equipment">
+      <ngx-loader></ngx-loader>
+    </nb-card>

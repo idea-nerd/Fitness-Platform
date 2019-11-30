@@ -1,0 +1,71 @@
+<div>
+        <nb-card *ngIf="subscription">
+            <nb-card-body>
+                <div>
+                  <div class="row">
+                    <div class="form-group row">
+                        <nb-actions size="small">
+                            <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                            <nb-action icon="archive-outline" title="archive" (click)="archive()"></nb-action>
+                        </nb-actions>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <nb-card>
+                        <nb-card-header>Subscription Details</nb-card-header>
+                        <nb-card-body>
+                          <div class="full-name-inputs">
+                            <!--CLient Details-->
+                            <table>
+                                <tr >
+                                    <td class="title">Subscription Code:</td>
+                                    <td>{{ subscription.subscriptionCode }}</td>
+                                </tr>
+                                <tr >
+                                    <td class="title">PlanCode:</td>
+                                    <td>{{ subscription.planCode }}</td>
+                                </tr>
+                                <tr >
+                                    <td class="title">Notes:</td>
+                                    <td>{{ subscription.notes }}</td>
+                                </tr>
+                                <tr >
+                                    <td class="title">Discount Percent:</td>
+                                    <td>{{ subscription.discountPercent }}%</td>
+                                </tr>
+                                <tr >
+                                    <td class="title">Tax:</td>
+                                    <td>${{ subscription.tax }}</td>
+                                </tr>
+                                <tr >
+                                    <td class="title">Additional Fees:</td>
+                                    <td>${{ subscription.additionalFees }}</td>
+                                </tr>
+                                <tr >
+                                    <td class="title">Start Date:</td>
+                                    <td>{{ subscription.startDate }}</td>
+                                </tr>
+                                <tr >
+                                    <td class="title">End Date:</td>
+                                    <td>{{ subscription.endDate }}</td>
+                                </tr>
+                                <tr >
+                                    <td class="title">Status:</td>
+                                    <td>{{ subscription.status }}</td>
+                                </tr>
+                                <tr *ngIf="subscription.status == 'Frozen'">
+                                    <td class="title">Remaining Days:</td>
+                                    <td>{{ subscription.extendedBy }}</td>
+                                </tr>
+                            </table>
+                          </div>
+                        </nb-card-body>
+                      </nb-card>
+                    </div>
+                  </div>
+                </div>
+            </nb-card-body>
+          </nb-card>
+        </div>

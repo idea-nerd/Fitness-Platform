@@ -1,0 +1,48 @@
+<div class="row" *ngIf="true">
+        <div class="col-xxl-12">
+            <br />
+            <div class="form-group row revenueHeader">
+                <div>
+                    <!--h3>Subscription Report</h3>
+                    <h6 class="subtitle">Overview of weekly intake</h6-->
+                </div>
+                <div>
+                    <nb-card>
+                        <nb-select placeholder="Select Branch">
+                            <nb-option value="1">Branch 1</nb-option>
+                            <nb-option value="2">Branch 2</nb-option>
+                            <nb-option value="3">Branch 3</nb-option>
+                            <nb-option value="4">Branch 4</nb-option>
+                        </nb-select>
+                    </nb-card>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xxl-12 pie">
+                        <div echarts [options]="options" class="echart"></div>
+                </div>
+            </div>
+            <div class="row">
+                <br />
+                <div class="col-xxl-12 revenueBarChart">
+                    <div>
+                        <h1>Active</h1>
+                        <h2 class="subtitle">{{ activeSubscriptions }}</h2>
+                    </div>
+                    <div>
+                        <h1>Expired</h1>
+                        <h2 class="subtitle">{{ expiredSubscriptions }}</h2>
+                    </div>
+                    <div>
+                        <h1>Frozen</h1>
+                        <h2 class="subtitle">{{ frozenSubscriptions }}</h2>
+                    </div>
+                    <div>
+                        <h1>New</h1>
+                        <h2 class="subtitle">{{ newSubscriptions }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

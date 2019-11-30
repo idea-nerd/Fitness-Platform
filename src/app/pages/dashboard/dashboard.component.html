@@ -1,0 +1,211 @@
+<!----------------------------------------------------------------  Trainer  -------------------------------------------------------------------------->
+<div class="row" *ngIf="Trainer && dashboard">
+  <div class="col-xxl-12">
+    <div class="row">
+      <div class="col-md-3">
+        <nb-card>
+            <div class="card-body">
+                <p class="card-title text-md-center text-xl-left">Clients</p>
+                <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                  <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ dashboard[0].clientsCount | ngxNumberWithCommas }}</h3>
+                  <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                </div>  
+                
+              </div>
+        </nb-card>
+      </div>
+      <div class="col-md-3">
+        <nb-card>
+            <div class="card-body">
+                <p class="card-title text-md-center text-xl-left">Pending Leads</p>
+                <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                  <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ dashboard[1].leadsCount | ngxNumberWithCommas }}</h3>
+                  <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                </div>  
+                
+              </div>
+        </nb-card>
+      </div>
+      <div class="col-md-3">
+        <nb-card>
+            <div class="card-body">
+                <p class="card-title text-md-center text-xl-left">Expiring Subscriptions</p>
+                <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                  <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ dashboard[2].subscriptionsCount | ngxNumberWithCommas }}</h3>
+                  <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                </div>  
+                
+              </div>
+        </nb-card>
+      </div>
+      <div class="col-md-3">
+        <nb-card>
+            <div class="card-body">
+                <p class="card-title text-md-center text-xl-left">Upcoming Birthdays</p>
+                <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                  <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ dashboard[3].birthdayCount | ngxNumberWithCommas }}</h3>
+                  <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                </div>  
+                
+              </div>
+        </nb-card>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+          <nb-card size="medium">
+            <nb-card-header>Pending Leads</nb-card-header>
+            <nb-card-body>
+                <ng2-smart-table
+                  [settings]="leadSettings"
+                  [source]="dashboard[4].leads"
+                >
+                </ng2-smart-table>
+            </nb-card-body>
+          </nb-card>
+        </div>
+        <div class="col-md-6">
+          <nb-card size="medium">
+            <nb-card-header>New Clients</nb-card-header>
+            <nb-card-body>
+                <ng2-smart-table
+                  [settings]="clientSettings"
+                  [source]="dashboard[5].clients"
+                >
+                </ng2-smart-table>
+            </nb-card-body>
+          </nb-card>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <nb-card size="medium">
+            <nb-card-header>Expiring Subscriptions</nb-card-header>
+            <nb-card-body>
+                <ng2-smart-table
+                  [settings]="subscriptionsSettings"
+                  [source]="dashboard[6].expiringSubscriptions"
+                >
+                </ng2-smart-table>
+            </nb-card-body>
+          </nb-card>
+        </div>
+
+        <div class="col-md-6">
+            <nb-card size="medium">
+              <nb-card-header>Upcoming Birthdays</nb-card-header>
+              <nb-card-body>
+                  <ng2-smart-table
+                    [settings]="birthdaySettings"
+                    [source]="dashboard[7].birthdays"
+                  >
+                  </ng2-smart-table>
+              </nb-card-body>
+            </nb-card>
+          </div>
+      </div>
+
+  </div>
+</div>
+
+
+<!----------------------------------------------------------------  Manager  -------------------------------------------------------------------------->
+<div class="row" *ngIf="Manager && dashboard">
+  <div class="col-xxl-12">
+    <div class="row highlights">
+      <div class="col-md-3">
+        <nb-card>
+            <div class="card-body">
+              <div>
+                <p class="card-title text-md-center text-xl-left">Leads</p>
+                <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                  <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ dashboard[0].leads | ngxNumberWithCommas }}</h3>
+                  <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                </div>  
+              </div>
+              <div class="infographic">
+                  <a routerLink="/pages/leads/view"><img src="assets/images/icons/user.png"></a>
+              </div>    
+            </div>
+        </nb-card>
+      </div>
+      <div class="col-md-3">
+        <nb-card>
+            <div class="card-body">
+              <div>
+                <p class="card-title text-md-center text-xl-left">Checkins</p>
+                <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                  <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ dashboard[1].appointments | ngxNumberWithCommas }}</h3>
+                  <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                </div>  
+              </div>
+              <div class="infographic">
+                  <a routerLink="/pages/checkin/view"><img src="assets/images/icons/calendar.png"></a>
+              </div> 
+            </div>
+        </nb-card>
+      </div>
+      <div class="col-md-3">
+        <nb-card>
+            <div class="card-body">
+              <div>
+                <p class="card-title text-md-center text-xl-left">Renewals</p>
+                <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                  <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ dashboard[2].subscriptionsCount | ngxNumberWithCommas }}</h3>
+                  <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                </div>  
+              </div>
+              <div class="infographic">
+                  <a routerLink="/pages/subscriptions/view"><img src="assets/images/icons/chart.png"></a>
+              </div>    
+            </div>
+        </nb-card>
+      </div>
+      <div class="col-md-3">
+        <nb-card>
+            <div class="card-body">
+              <div>
+                <p class="card-title text-md-center text-xl-left">Expenses</p>
+                <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                  <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{ dashboard[4].expensesCount | ngxNumberWithCommas }}</h3>
+                  <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                </div> 
+              </div> 
+                <div class="infographic">
+                    <a routerLink="/pages/expenses/view"><img src="assets/images/icons/bearish.png"></a>
+                </div> 
+              </div>
+        </nb-card>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+          <nb-card size="medium">
+              <nb-card-header>Gym Schedule</nb-card-header>
+              <nb-card-body class="dashboardAppointments">
+                  <ejs-schedule [eventSettings]='eventSettings' (cellClick) = "oncellClick($event)" (cellDoubleClick) = "onCellDoubleClick($event)"></ejs-schedule>
+              </nb-card-body>
+          </nb-card>
+        </div>
+        <div class="col-md-6">
+            <nb-card size="medium">
+                <nb-card-header>Upcoming Birthdays</nb-card-header>
+                <nb-card-body>
+                  <ng2-smart-table
+                  [settings]="birthdaySettings"
+                  [source]="dashboard[6].birthdays"
+                  >
+                  </ng2-smart-table>
+                </nb-card-body>
+              </nb-card>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+
+

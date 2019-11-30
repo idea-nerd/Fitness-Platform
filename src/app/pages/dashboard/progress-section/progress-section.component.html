@@ -1,0 +1,28 @@
+<nb-card size="medium">
+  <nb-card-body>
+    <div class="progress-info">
+      <div class="subtitle">Weekly Profit</div>
+      <div class="h3">${{ profit }}</div>
+      <nb-progress-bar [value]="profitPercent"></nb-progress-bar>
+      <div class="caption description">
+        <bdi>{{ profitMargin }}</bdi>
+      </div>
+    </div>
+    <div class="progress-info">
+      <div class="subtitle">Weekly Renewed Subscriptions</div>
+      <div class="h3">{{ subscriptions | ngxNumberWithCommas }}</div>
+      <nb-progress-bar [value]="subscriptionPercent"></nb-progress-bar>
+      <div class="caption description">
+        <bdi>{{ subscriptionMargin }}</bdi>
+      </div>
+    </div>
+    <div class="progress-info">
+      <div class="subtitle">Weekly New Members</div>
+      <div class="h3">{{ clients | ngxNumberWithCommas }}</div>
+      <nb-progress-bar [value]="clientsPercent"></nb-progress-bar>
+      <div class="caption description">
+        <bdi>{{ clientsMargin }}</bdi>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,53 @@
+<!--div class="col-md-3"-->
+<div style="margin-right: 10px">
+        <nb-reveal-card>
+            <nb-card-front>
+                <nb-card accent="success">
+                    <nb-card-header>{{ name }}</nb-card-header>
+                    <nb-card-body>
+                        <img src="{{ image }}" height="370" width="270">
+                    </nb-card-body>
+                    <nb-card-footer> {{ role }}  </nb-card-footer>
+                </nb-card>
+            </nb-card-front>
+            <nb-card-back>
+                <nb-card accent="primary">
+                    <nb-card-header>{{ name }}</nb-card-header>
+                    <nb-card-body>
+                            <table>
+                                    <tr >
+                                        <td class="title">Role:</td>
+                                        <td> {{ role }}</td>
+                                    </tr>
+                                    <tr >
+                                        <td class="title">Clients:</td>
+                                        <td> {{ count }}</td>
+                                    </tr>
+                                    <tr >
+                                        <td class="title">Email:</td>
+                                        <td><a href='mailto:{{email}}'>
+                                                <nb-icon 
+                                                  icon="email-outline" 
+                                                  status="success"  
+                                                  pack="eva">
+                                                </nb-icon>
+                                              </a>
+                                          </td>
+                                    </tr>
+                                    <tr >
+                                        <td class="title">Phone:</td>
+                                        <td><a href='tel:{{phone}}'>
+                                                <nb-icon 
+                                                  icon="phone-outline" 
+                                                  status="success"  
+                                                  pack="eva">
+                                                </nb-icon>
+                                              </a>
+                                          </td>
+                                    </tr>
+                                </table>
+                    </nb-card-body>
+                </nb-card>
+            </nb-card-back>
+        </nb-reveal-card>
+    </div>

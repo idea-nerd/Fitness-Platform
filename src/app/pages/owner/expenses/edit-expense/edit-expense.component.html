@@ -1,0 +1,56 @@
+<nb-card *ngIf="expense">
+        <nb-card-body>
+          <form [formGroup]="expensesForm" (ngSubmit)="onSubmit(expensesForm.value)">
+            <div>
+              <div class="row">
+                <div class="form-group row">
+                    <nb-actions size="small">
+                        <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                        <nb-action icon="plus-outline" title="update" (click)="onSubmit(expensesForm.value)" [disabled]="!expensesForm.valid"></nb-action>
+                        <nb-action icon="archive-outline" title="archive" (click)="onArchive()" [disabled]="!expensesForm.valid"></nb-action>
+                    </nb-actions>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                  <div class="col-lg-12">
+        
+                    <nb-card>
+                      <nb-card-header>Expenses Details</nb-card-header>
+                      <nb-card-body>
+                        <div class="full-name-inputs">
+                            <nb-select id="paid" formControlName="paid" placeholder="Payment Status" required>
+                              <nb-option value="Pending">Pending</nb-option>
+                              <nb-option value="Paid">Paid</nb-option>
+                            </nb-select>
+                        </div>
+                        <div class="full-name-inputs">
+                          <nb-select id="category" formControlName="category" placeholder="Expense Category" required>
+                            <nb-option value="Utility Bill">Utility Bill</nb-option>
+                            <nb-option value="Rent">Rent</nb-option>
+                            <nb-option value="Restock">Restock</nb-option>
+                            <nb-option value="Reimbursement">Reimbursement</nb-option>
+                            <nb-option value="Miscellaneous">Miscellaneous</nb-option>
+                          </nb-select>
+                        </div>
+                        <div class="full-name-inputs">
+                          <input type="number" nbInput fullWidth placeholder="Amount" formControlName="amount" required />
+                          <div>
+                            <input nbInput placeholder="Payment Due Date" [nbDatepicker]="formpicker" formControlName="dueDate"
+                              required>
+                            <nb-datepicker #formpicker></nb-datepicker>
+                          </div>
+                        </div>
+                        <div class="full-name-inputs">
+                            <input type="text" nbInput fullWidth placeholder="Description" formControlName="note" required />
+                        </div>
+                      </nb-card-body>
+                    </nb-card>
+        
+        
+                  </div>
+                </div>
+            </div>
+          </form>
+        </nb-card-body>
+      </nb-card>

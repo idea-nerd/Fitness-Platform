@@ -1,0 +1,109 @@
+@import './../../@theme/styles/themes.scss';
+
+/*
+* 
+* Global Aestetic Formatting
+    - Reduces Box Shadow on Header & Footer
+*    
+*/
+nb-layout-header nav {
+    box-shadow: 0 0rem 0rem 0 !important;
+}
+
+nb-layout .layout .layout-container .content nb-layout-footer {
+    box-shadow: 0 0rem 0rem 0 !important;
+}
+
+.content {
+    background: #ffffff !important;
+}
+/*
+* 
+* ng2-smart-table
+    - Removes background and border from search filter input fields
+*    
+*/
+input.form-control.ng-untouched.ng-pristine.ng-valid, 
+input.form-control.ng-pristine.ng-valid.ng-touched {
+    background: none;
+    border: none;
+}
+
+/*
+* 
+* nb-dialog
+    - Add overflow to dialog to enable scroll in mobile view 
+*    
+*/
+nb-dialog-container {
+    overflow: auto;
+    max-width: 1292px;
+}
+
+/*
+* 
+* Header > helpdesk
+    - Removes background and border from button
+    - Removes default underline from <a> tag
+*    
+*/
+.helpdesk a {
+    text-decoration: none !important; 
+    background: none !important; 
+    border: none !important;  
+    text-transform: uppercase !important; 
+    span {
+            color: #E72B53; 
+    }
+} 
+
+/*
+* 
+* Ensures all svg icons are black by default
+*    
+*/
+svg {
+    color: #1b1b1bbd;
+}
+
+/*
+* 
+* Flip Button | Subscription Section
+*    
+*/
+a.flip-button.ng-star-inserted {
+    top: 4px !important;
+}
+
+
+/*
+* 
+* Ng-smart-table | Search Input
+*    
+*/
+ng2-smart-table input {
+    background-color: #fff !important;
+    background-clip: padding-box !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 0.25rem !important;
+}
+
+/*
+* 
+* Syncfusion Calendar | Dashboard
+*    
+*/
+//.dashboardAppointments ejs-schedule .e-toolbar-items .e-toolbar-right {
+//    display: none !important;
+//}
+
+
+
+/*
+* 
+* Social | Footer
+*    
+*/
+nb-layout-footer .socials {
+    display: none !important;
+}

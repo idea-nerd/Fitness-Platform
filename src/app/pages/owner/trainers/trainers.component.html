@@ -1,0 +1,29 @@
+<nb-flip-card>
+    <nb-card-front>
+        <nb-card>
+            <nb-card-header>Trainers</nb-card-header>
+        </nb-card>
+        <nb-card>
+            <nb-card-body>
+                <ng2-smart-table [settings]="settings" [source]="users$ | async">
+                </ng2-smart-table>
+            </nb-card-body>
+        </nb-card>
+    </nb-card-front>
+    <nb-card-back *ngIf="trainerClients">
+        <nb-card>
+            <nb-card-header>Trainer | Clients</nb-card-header>
+            <nb-card-body>
+                <div class="col-xxl-12">
+                    <div class="row">
+                        <ngx-trainer-stats *ngFor="let trainers of trainerClients"
+                            [image]="trainers.image" [name]="trainers.name"
+                            [role]="trainers.role" [count]="trainers.count"
+                            [email]="trainers.email" [phone]="trainers.phone"
+                            ></ngx-trainer-stats>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </nb-card-back>
+</nb-flip-card>

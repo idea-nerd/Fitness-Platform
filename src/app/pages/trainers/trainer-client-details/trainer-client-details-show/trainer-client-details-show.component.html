@@ -1,0 +1,82 @@
+<div>
+        <nb-card *ngIf="clientDetails">
+                <nb-card-body>
+                    <div>
+                      <div class="row">
+                        <div class="form-group row">
+                            <nb-actions size="small">
+                                <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                            </nb-actions>
+                        </div>
+                      </div>
+                      <br />
+                      <div class="row">      
+                        <div class="col-lg-12">
+                          <nb-card>
+                            <nb-card-header>Lead Details</nb-card-header>
+                            <nb-card-body>
+                              <div class="full-name-inputs">
+                                <!--CLient Details-->
+                                <table>
+                                    <tr >
+                                        <td class="title">Body Fat %:</td>
+                                        <td>{{ clientDetails.bfp }} %</td>
+                                    </tr>
+                                    <tr >
+                                        <td class="title">Height:</td>
+                                        <td>{{ clientDetails.height }} in</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Weight:</td>
+                                        <td>{{ clientDetails.weight }} lb</td>
+                                    </tr>
+                                    <tr >
+                                        <td class="title">Chest:</td>
+                                        <td>{{ clientDetails.chest }} in</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Waist:</td>
+                                        <td>{{ clientDetails.waist }} in</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Hips:</td>
+                                        <td>{{ clientDetails.hips }} in</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Left Arm:</td>
+                                        <td>{{ clientDetails.leftArm }} in</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Right Arm:</td>
+                                        <td>{{ clientDetails.rightArm }} in</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Left Calf:</td>
+                                        <td>{{ clientDetails.leftCalf }} in</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Right Calf:</td>
+                                        <td>{{ clientDetails.rightCalf }} in</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Left Thigh:</td>
+                                        <td>{{ clientDetails.leftThigh }} in</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Right Thigh:</td>
+                                        <td>{{ clientDetails.rightThigh }} in</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Notes:</td>
+                                        <td>{{ clientDetails.notes }}</td>
+                                    </tr>
+                                </table>
+                              </div>
+                            </nb-card-body>
+                          </nb-card>
+                        </div>
+                      </div>
+                    </div>
+                </nb-card-body>
+              </nb-card>
+            </div>

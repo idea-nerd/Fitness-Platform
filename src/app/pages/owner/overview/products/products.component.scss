@@ -1,0 +1,38 @@
+/*
+* 
+* Dashboard | Owner | Revenue
+    - Revenue Header Layout
+    - Chart Size
+*    
+*/
+.revenueHeader {
+    margin: 15px; 
+    bottom: 10px; 
+    display: flex; 
+    justify-content: space-between;
+    h3 {
+        opacity: 0.8;
+    }
+}
+
+.revenueChart {
+    min-height: calc(100vh - 40em) !important;
+    padding-bottom: 40px;
+}
+
+.revenueBarChart {
+    display: flex; 
+    justify-content: space-around;
+    div {
+        padding-left: 20px;
+        border-left: 1px solid #d2caca26;
+    }
+    .subtitle {
+        opacity: 0.8;
+        font-size: 1.2rem;
+    }
+}
+
+.subtitle {
+    opacity: 0.4;
+}

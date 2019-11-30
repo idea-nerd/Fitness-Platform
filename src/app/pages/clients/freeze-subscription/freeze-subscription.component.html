@@ -1,0 +1,34 @@
+<nb-card *ngIf="subscription">
+        <nb-card-body>
+          <form [formGroup]="subscriptionsForm" (ngSubmit)="onSubmit(subscriptionsForm.value)">
+            <div>
+              <div class="row">
+                <div class="form-group row">
+                  <nb-actions size="small">
+                    <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                    <nb-action icon="plus-square-outline" title="update" (click)="onSubmit(subscriptionsForm.value)"></nb-action>
+                  </nb-actions>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-lg-7">
+                  <nb-card>
+                    <nb-card-body>
+                      <div class="full-name-inputs">
+                        <input type="text" nbInput fullWidth placeholder="Remaining Days" disabled/>
+                      </div>
+                    </nb-card-body>
+                  </nb-card>
+                </div>
+                <div class="col-lg-5">
+                  <nb-card>
+                    <nb-card-body>
+                      <input type="number" nbInput fullWidth placeholder="Days" formControlName="days"/>
+                    </nb-card-body>
+                  </nb-card>
+                </div>
+              </div>
+            </div>
+          </form>
+        </nb-card-body>

@@ -1,0 +1,85 @@
+<nb-card>
+    <nb-card-body>
+      <form [formGroup]="subscriptionsForm" (ngSubmit)="onSubmit(subscriptionsForm.value)">
+        <div>
+          <div class="row">
+            <div class="form-group row">
+                <nb-actions size="small">
+                    <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                    <nb-action *ngIf="subscriptionsForm.valid" icon="plus-outline" title="add" (click)="onSubmit(subscriptionsForm.value)" [disabled]="!subscriptionsForm.valid"></nb-action>
+                    <nb-action *ngIf="!subscriptionsForm.valid" icon="plus-outline" title="add" [disabled]="!subscriptionsForm.valid"></nb-action>
+                </nb-actions>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-lg-6">
+                <nb-card>
+                  <nb-card-header>Plan</nb-card-header>
+                  <nb-card-body>
+
+                    <div class="full-name-inputs">
+                            <nb-select id="plans" formControlName="plans" placeholder="Select Plan" required>
+                              <nb-option *ngFor="let plan of plans$ | async" value="{{plan.planCode}}|{{ plan.amount }}|{{plan.id}}">{{ plan.name }}</nb-option>
+                            </nb-select>   
+                    </div>
+
+                  </nb-card-body>
+                </nb-card>
+                <nb-card *ngIf="planExpirationPenalty">
+                  <nb-card-header><span style="color:red">** Expiration Penalty **</span></nb-card-header>
+                  <nb-card-body>
+
+                    <div class="full-name-inputs">
+                        <nb-checkbox [checked]="planExpirationPenalty"
+                                     (checkedChange)="onPenaltyCheckedChanged($event)">$30 Penalty</nb-checkbox>
+                    </div>
+
+                  </nb-card-body>
+                </nb-card>
+                <nb-card>
+                    <nb-card-header>Preview</nb-card-header>
+                        <nb-card-body class="full-name-inputs" >
+                        <p *ngIf="subscriptionsForm.value.plans">
+                          <span *ngIf="!planExpirationPenalty" style="color:black">Total: ${{ calculatePrice() }}</span>
+                          <span *ngIf="planExpirationPenalty" style="color:red">Total: ${{ calculatePrice() }}</span>
+                        </p>
+                    </nb-card-body>
+                  </nb-card>
+            </div>
+            <div class="col-lg-6">
+                <div class="full-name-inputs">
+                    <nb-checkbox [checked]="addDiscount"
+                                 (checkedChange)="onDiscountCheckedChanged($event)">Discount</nb-checkbox>
+                </div>
+                <nb-card *ngIf="addDiscount">
+                    <nb-card-header>Discount Details</nb-card-header>
+                    <nb-card-body>
+                      <div class="full-name-inputs">
+                        <textarea rows="4" cols="50" type="text" nbInput fullWidth placeholder="Additional Info" formControlName="notes" required></textarea>
+                      </div>
+
+                      <div class="full-name-inputs">
+                        <input type="number" nbInput fullWidth formControlName="discountAmount" placeholder="Discount $" value="0" required>
+                      </div>
+                      
+                    </nb-card-body>
+                  </nb-card>
+                  <div class="full-name-inputs">
+                      <nb-checkbox [checked]="additionalFeesCharge"
+                                   (checkedChange)="onFeesCheckedChanged($event)">Additional Fees</nb-checkbox>
+                  </div>
+                  <nb-card *ngIf="additionalFeesCharge">
+                      <nb-card-header>Additional Fees</nb-card-header>
+                      <nb-card-body>  
+                        <div class="full-name-inputs">
+                          <input type="number" nbInput fullWidth formControlName="additionalFees" placeholder="Additional Fees $" required>
+                        </div>
+                      </nb-card-body>
+                    </nb-card>
+              </div> 
+            </div>
+          </div>
+      </form>
+    </nb-card-body>
+  </nb-card>

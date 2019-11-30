@@ -1,0 +1,85 @@
+<div>
+<nb-card *ngIf="lead">
+  <nb-card-body>
+    <form [formGroup]="leadsForm" (ngSubmit)="onSubmit(leadsForm.value)">
+      <div>
+        <div class="form-group row">
+          <nb-actions size="small">
+            <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+            <nb-action icon="plus-square-outline" title="update" (click)="onSubmit(leadsForm.value)"
+              [disabled]="!leadsForm.valid"></nb-action>
+            <nb-action icon="archive-outline" title="archive" (click)="onArchive(leadsForm.value)"
+              [disabled]="!leadsForm.valid"></nb-action>
+          </nb-actions>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-7">
+              <nb-card>
+                <nb-card-header>Leads Details</nb-card-header>
+                <nb-card-body>
+                  <div class="full-name-inputs">
+                    <input type="text" nbInput fullWidth placeholder="First Name" formControlName="firstName"
+                      title="First Name" required />
+                    <input type="text" nbInput fullWidth placeholder="Last Name" formControlName="lastName" required />
+                  </div>
+                  <div class="full-name-inputs">
+                    <input type="tel" nbInput fullWidth placeholder="Phone" formControlName="phone" required />
+                    <input type="email" nbInput fullWidth placeholder="Email" formControlName="email" required />
+                  </div>
+                  <div class="full-name-inputs">
+                    <nb-select id="gender" formControlName="gender" placeholder="Gender" required>
+                      <nb-option value="Male">Male</nb-option>
+                      <nb-option value="Female">Female</nb-option>
+                    </nb-select>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+  
+              <nb-card>
+                <nb-card-header>Client Goals</nb-card-header>
+                <nb-card-body>
+                    <div>
+                      <nb-select id="aim" formControlName="aim" placeholder="Service" required>
+                        <nb-option *ngFor="let service of service$ | async" value="{{ service.name }}">{{ service.name }}</nb-option>
+                      </nb-select>
+                    </div>
+                    <div>
+                      <nb-select id="interestedIn" formControlName="interestedIn" placeholder="Level" required>
+                        <nb-option *ngFor="let plan of plans$ | async" value="{{ plan.name }}">{{ plan.name }}</nb-option>
+                      </nb-select>
+                    </div>
+                  </nb-card-body>
+              </nb-card>
+              
+            </div>
+            <div class="col-lg-5">
+              <nb-card>
+                <nb-card-header>Intended Start</nb-card-header>
+                <nb-card-body>
+                  <div>
+                    <input nbInput placeholder="Intended Start" [nbDatepicker]="formpicker" formControlName="startBy" required>
+                    <nb-datepicker #formpicker></nb-datepicker>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+
+              <nb-card>
+                  <nb-card-header>Status</nb-card-header>
+                  <nb-card-body>
+                      <div class="full-name-inputs">
+                          <nb-select id="status" formControlName="status" placeholder="Status" required>
+                            <nb-option value="Pending">Pending</nb-option>
+                            <nb-option value="Member">Member</nb-option>
+                            <nb-option value="Lost">Lost</nb-option>
+                          </nb-select>
+                        </div>
+                  </nb-card-body>
+                </nb-card>
+            </div>
+          </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>
+</div>

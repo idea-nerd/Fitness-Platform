@@ -1,0 +1,40 @@
+<nb-card>
+        <nb-card-body>
+          <form [formGroup]="servicesForm" (ngSubmit)="onSubmit(servicesForm.value)">
+            <div>
+              <div class="row">
+                <div class="form-group row">
+                    <nb-actions size="small">
+                        <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                        <nb-action *ngIf="servicesForm.valid" icon="plus-outline" title="add" (click)="onSubmit(servicesForm.value)" [disabled]="!servicesForm.valid"></nb-action>
+                        <nb-action *ngIf="!servicesForm.valid" icon="plus-outline" title="add" [disabled]="!servicesForm.valid"></nb-action>
+                    </nb-actions>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-lg-12">
+
+                  <nb-card>
+                    <nb-card-header>Services Details</nb-card-header>
+                    <nb-card-body>
+                      <div class="full-name-inputs">
+                        <input type="text" nbInput fullWidth placeholder="Name" formControlName="name" required />
+                        <input type="text" nbInput fullWidth placeholder="Description" formControlName="description" required />
+                      </div>
+                      <!----div class="alert"
+                        *ngIf="!servicesForm.controls['name'].valid && servicesForm.controls['name'].touched">
+                        {{ validations.length }}</div>
+                      <div class="alert"
+                        *ngIf="!servicesForm.controls['description'].valid && servicesForm.controls['description'].touched">
+                        {{ validations.length }}</div-->
+                      </nb-card-body>
+                    </nb-card>
+
+
+                </div>
+              </div>
+            </div>
+          </form>
+        </nb-card-body>
+      </nb-card>

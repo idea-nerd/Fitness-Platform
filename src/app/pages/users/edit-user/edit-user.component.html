@@ -1,0 +1,104 @@
+<nb-card *ngIf="user">
+    <nb-card-body>
+      <form [formGroup]="usersForm" (ngSubmit)="onSubmit(usersForm.value)">
+        <div>
+            <div class="row">
+                <div class="form-group row">
+                    <nb-actions size="small">
+                      <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                      <nb-action icon="plus-square-outline" title="update" (click)="onSubmit(usersForm.value)"
+                        [disabled]="!usersForm.valid"></nb-action>
+                      <nb-action icon="archive-outline" title="archive" (click)="onArchive(usersForm.value)"
+                        [disabled]="!usersForm.valid"></nb-action>
+                    </nb-actions>
+                  </div>
+              </div>
+          <br />
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="row">
+                <nb-card>
+                  <nb-card-header>User Details</nb-card-header>
+                  <nb-card-body>
+                    <div class="full-name-inputs">
+                      <input type="text" nbInput fullWidth placeholder="First Name" formControlName="firstName" title="First Name" required />
+                      <input type="text" nbInput fullWidth placeholder="Last Name" formControlName="lastName" required />
+                    </div>
+                    <div class="full-name-inputs">
+                      <input nbInput placeholder="Date of Birth" [nbDatepicker]="formpicker" formControlName="dob"
+                        required>
+                      <nb-datepicker #formpicker></nb-datepicker>
+                      <label for="gender" class="label col-form-label">Sex</label>
+                      <nb-select id="gender" formControlName="gender" required>
+                        <nb-option value="Male">Male</nb-option>
+                        <nb-option value="Female">Female</nb-option>
+                      </nb-select>
+                    </div>
+                    <input type="text" nbInput fullWidth placeholder="Address" formControlName="address" required />
+                    <div class="full-name-inputs">
+                      <input type="text" nbInput fullWidth placeholder="District" formControlName="district" required />
+                      <input type="text" nbInput fullWidth placeholder="City" formControlName="city"/>
+                      <input type="text" nbInput fullWidth placeholder="Town" formControlName="town"/>
+                    </div>
+                    <div class="full-name-inputs">
+                        <input type="text" nbInput fullWidth placeholder="Phone" formControlName="phone" required />
+                        <input type="text" nbInput fullWidth placeholder="Email" formControlName="email" required />
+                    </div>
+                  </nb-card-body>
+                </nb-card>
+              </div>
+
+              <div class="row">
+                  <nb-card>
+                    <nb-card-header>User Role Details</nb-card-header>
+                    <nb-card-body>
+                      <div class="full-name-inputs">
+                        <label for="role" class="label col-form-label">Role</label>
+                        <nb-select id="role" formControlName="role" placeholder="Role" [(selected)]="user.role" required>
+                          <nb-option *ngFor="let role of roles$ | async" value="{{ role.id }}">{{ role.displayName }}</nb-option>
+                        </nb-select>
+                      </div>
+                    </nb-card-body>
+                  </nb-card>
+                </div>
+            </div>
+  
+            <div class="col-lg-6">
+              <nb-card>
+                <nb-card-header>Emergency Contact Details</nb-card-header>
+                <nb-card-body>
+                  <div class="full-name-inputs">
+                    <input type="text" nbInput fullWidth placeholder="First Name" formControlName="contactFName" required />
+                    <input type="text" nbInput fullWidth placeholder="Last Name" formControlName="contactLName" required />
+                  </div>
+                  <div class="full-name-inputs">
+                    <input type="tel" nbInput fullWidth placeholder="Phone" formControlName="contactPhone" required />
+                  </div>
+                </nb-card-body>
+              </nb-card>
+  
+              <nb-card>
+                <nb-card-header>Image</nb-card-header>
+                <nb-card-body>
+                  <div ngx-dropzone style="background: none!important; border: 2px dashed #e4e9f2;"
+                    [accept]="'image/*'" 
+                    [multiple]="false" 
+                    [expandable]="true"
+                    (change)="onSelect($event)">
+                    <ngx-dropzone-label>
+                      <div>
+                        <h2></h2>
+                      </div>
+                    </ngx-dropzone-label>
+                    <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                      <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                    </ngx-dropzone-image-preview>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+            </div>
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+  </nb-card>

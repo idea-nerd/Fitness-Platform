@@ -1,0 +1,88 @@
+<div>
+        <nb-card *ngIf="sale">
+            <nb-card-body>
+                <div>
+                  <div class="row">
+                    <div class="form-group row">
+                        <nb-actions size="small">
+                            <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                        </nb-actions>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="row">
+                        <nb-card>
+                          <nb-card-body>
+                            <div class="full-name-inputs">
+                                <img src="{{ sale.image }}" alt="product">
+                            </div>
+                          </nb-card-body>
+                        </nb-card>
+                      </div>
+                    </div>
+          
+                    <div class="col-lg-6">
+                      <nb-card>
+                        <nb-card-header>Sale Details</nb-card-header>
+                        <nb-card-body>
+                          <div class="full-name-inputs">
+                            <!--CLient Details-->
+                            <table>
+                                <tr >
+                                    <td class="title">Transaction Date:</td>
+                                    <td>{{ sale.date }}</td>
+                                </tr>
+                                <tr >
+                                    <td class="title">Invoice:</td>
+                                    <td>{{ sale.transactionCode }}</td>
+                                </tr>                  
+                                <tr >
+                                    <td class="title">Quantity:</td>
+                                    <td>{{ sale.quantity }}</td>
+                                </tr>
+                                <tr >
+                                    <td class="title">Total:</td>
+                                    <td>${{ sale.amount }}</td>
+                                </tr>
+                            </table>
+                          </div>
+                        </nb-card-body>
+                      </nb-card>
+                      <nb-card>
+                          <nb-card-header>Customer Details</nb-card-header>
+                          <nb-card-body>
+                            <div class="full-name-inputs">
+                              <!--CLient Details-->
+                              <table>
+                                  <tr >
+                                      <td class="title">First Name:</td>
+                                      <td>{{ sale.firstName }}</td>
+                                  </tr>
+                                  <tr >
+                                      <td class="title">Last Name:</td>
+                                      <td>{{ sale.lastName }}</td>
+                                  </tr>                  
+                                  <tr >
+                                      <td class="title">Address:</td>
+                                      <td>{{ sale.address }}</td>
+                                  </tr>
+                                  <tr >
+                                      <td class="title">Phone:</td>
+                                      <td>{{ sale.phone }}</td>
+                                  </tr>
+                              </table>
+                            </div>
+                          </nb-card-body>
+                        </nb-card>
+                    </div>
+                  </div>
+                </div>
+            </nb-card-body>
+          </nb-card>
+          
+          <nb-card *ngIf="!sale">
+            <ngx-loader></ngx-loader>
+          </nb-card>
+        </div>

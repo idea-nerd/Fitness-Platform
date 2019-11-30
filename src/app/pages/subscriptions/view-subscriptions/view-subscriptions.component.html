@@ -1,0 +1,40 @@
+<nb-flip-card>
+  <nb-card-front>
+    <nb-card>
+      <nb-card-header>Subscriptions</nb-card-header>
+      <nb-card-body>
+        <nb-actions size="small">
+          <nb-action *ngIf="subscriptionsPresent" icon="eye-outline" title="view" (click)="onViewSelect()"></nb-action>
+          <nb-action *ngIf="!subscriptionsPresent" icon="eye-outline" title="view" disabled></nb-action>
+        </nb-actions>
+      </nb-card-body>
+    </nb-card>
+    <nb-card>
+      <nb-card-body>
+        <ng2-smart-table [settings]="settings" [source]="subscriptions$ | async" (rowSelect)="onSelected($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-front>
+  <nb-card-back>
+    <nb-card>
+      <nb-card-header>Expired Subscriptions</nb-card-header>
+      <nb-card-body>
+          <div class="col-xxl-12">
+              <div class="row">
+                  <ngx-expired-subscriptions *ngFor="let expiredClient of expiredSubscriptions"
+                    [image]="expiredClient.image"
+                    [firstName]="expiredClient.firstName"
+                    [lastName]="expiredClient.lastName"
+                    [endDate]="expiredClient.endDate"
+                    [email]="expiredClient.email"
+                    [phone]="expiredClient.phone"
+                    [status]="expiredClient.status"
+                    [amount]="expiredClient.amount"
+                    ></ngx-expired-subscriptions>
+              </div>
+          </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-back>
+</nb-flip-card>

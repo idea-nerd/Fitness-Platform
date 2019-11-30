@@ -1,0 +1,74 @@
+<nb-card>
+    <nb-card-body>
+      <form [formGroup]="productsForm" (ngSubmit)="onSubmit(productsForm.value)" enctype="multipart/form-data">
+        <div>
+          <div class="row">
+            <div class="form-group row">
+                <nb-actions size="small">
+                    <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                    <nb-action *ngIf="productsForm.valid" icon="plus-outline" title="add" (click)="onSubmit(productsForm.value)" [disabled]="!productsForm.valid"></nb-action>
+                    <nb-action *ngIf="!productsForm.valid" icon="plus-outline" title="add" [disabled]="!productsForm.valid"></nb-action>
+                </nb-actions>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="row">
+              <nb-card>
+                <nb-card-header>Products Details</nb-card-header>
+                <nb-card-body>
+                  <div class="full-name-inputs">
+                    <input type="text" nbInput fullWidth placeholder="Name" formControlName="name" required />
+                    <input type="text" nbInput fullWidth placeholder="Description" formControlName="description" required />
+                  </div>
+                  <div class="full-name-inputs">
+                    <input type="number" nbInput fullWidth placeholder="Cost Price" formControlName="costPrice" required />
+                    <input type="number" nbInput fullWidth placeholder="Sales Price" formControlName="salePrice" required />
+                  </div>
+                    <div class="full-name-inputs">
+                        <input type="number" nbInput fullWidth placeholder="Quantity" formControlName="quantity" required />
+                    </div>
+                  </nb-card-body>
+                </nb-card>
+                </div>
+                <div class="row">
+                <nb-card>
+                <nb-card-header>Product Type</nb-card-header>
+                  <nb-card-body>
+                  <div class="full-name-inputs">
+                    <nb-select id="category" formControlName="category" placeholder="Product Category" required>
+                      <nb-option value="Supplements">Supplements</nb-option>
+                      <nb-option value="Apparel">Apparel</nb-option>
+                    </nb-select>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+              </div>
+            </div>
+            <div class="col-lg-5">
+                <nb-card>
+                    <nb-card-header>Image</nb-card-header>
+                    <nb-card-body>
+                      <div ngx-dropzone style="background: none!important; border: 2px dashed #e4e9f2;"
+                        [accept]="'image/*'" 
+                        [multiple]="false" 
+                        [expandable]="true"
+                        (change)="onSelect($event)">
+                        <ngx-dropzone-label>
+                          <div>
+                            <h2></h2>
+                          </div>
+                        </ngx-dropzone-label>
+                        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                          <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-image-preview>
+                      </div>
+                    </nb-card-body>
+                  </nb-card>
+            </div>
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+  </nb-card>

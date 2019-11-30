@@ -1,0 +1,50 @@
+<div>
+    <nb-card *ngIf="plan">
+        <nb-card-body>
+            <div>
+              <div class="row">
+                <div class="form-group row">
+                    <nb-actions size="small">
+                        <nb-action icon="close-outline" title="close" (click)="dismiss()"></nb-action>
+                    </nb-actions>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+      
+                <div class="col-lg-12">
+                  <nb-card>
+                    <nb-card-header>Plan Details</nb-card-header>
+                    <nb-card-body>
+                      <div class="full-name-inputs">
+                        <table>
+                            <tr >
+                                <td class="title">Service:</td>
+                                <td>{{ plan.serviceName }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">Plan Name:</td>
+                                <td>{{ plan.name }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">Description:</td>
+                                <td>{{ plan.description }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">Days:</td>
+                                <td>{{ plan.days }}</td>
+                            </tr>
+                            <tr >
+                                <td class="title">Cost:</td>
+                                <td>{{ plan.amount }}</td>
+                            </tr>
+                        </table>
+                      </div>
+                    </nb-card-body>
+                  </nb-card>
+                </div>
+              </div>
+            </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
